@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever, Vaishnavi?</title>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text y=%2226%22 font-size=%2226%22>❤️</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(135deg,#ffe6f2,#f5e9ff,#fff7fb);
+  overflow-x:hidden;
+  color:#444;
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 18px;
+  text-align:center;
+}
+
+h1,h2{
+  font-family:'Playfair Display',serif;
+  color:#ff4d88;
+}
+
+.entry{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#ffd6e7,#efe1ff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.entryBtn{
+  padding:20px 34px;
+  border-radius:50px;
+  border:none;
+  font-size:20px;
+  cursor:pointer;
+  background:white;
+  box-shadow:0 12px 40px rgba(255,105,180,.3);
+  transition:.3s;
+}
+
+.entryBtn:hover{transform:scale(1.08)}
+
+.card{
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(18px);
+  border-radius:26px;
+  padding:46px 30px;
+  max-width:560px;
+  box-shadow:0 20px 60px rgba(255,105,180,.18);
+}
+
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:14px;
+  opacity:.6;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+.btnRow{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  margin-top:30px;
+}
+
+button{
+  border:none;
+  border-radius:40px;
+  padding:14px 28px;
+  font-size:16px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.yes{
+  background:linear-gradient(135deg,#ff4d88,#ff7eb3);
+  color:white;
+  transform:scale(1.12);
+  box-shadow:0 0 24px rgba(255,77,136,.55);
+}
+
+.yes:hover{transform:scale(1.2)}
+
+.no{background:#f1f1f1;color:#777}
+
+.shake{animation:shake .4s}
+
+@keyframes shake{
+  25%{transform:translateX(-5px)}
+  50%{transform:translateX(5px)}
+  75%{transform:translateX(-5px)}
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  justify-content:center;
+  align-items:center;
+}
+
+.modalBox{
+  background:white;
+  padding:24px;
+  border-radius:18px;
+  max-width:320px;
+}
+
+.modal img{width:100%;border-radius:12px}
+
+.confetti{
+  position:fixed;
+  width:10px;
+  height:10px;
+  background:#ff7eb3;
+  top:-10px;
+  animation:fall 1.6s linear forwards;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(720deg);opacity:0}
+}
+
+.typing{
+  font-size:24px;
+  color:#ff4d88;
+  min-height:36px;
+}
+
+.grid{
+  display:grid;
+  gap:18px;
+  max-width:750px;
+}
+
+@media(min-width:700px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+
+.reason{
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.music{
+  position:fixed;
+  top:16px;
+  right:16px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:none;
+  background:white;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.timer{
+  margin-top:14px;
+  font-size:15px;
+  opacity:.85;
+}
+
+.glow{
+  font-size:46px;
+  margin-top:18px;
+  animation:glow 1.6s infinite;
+}
+
+@keyframes glow{
+  50%{text-shadow:0 0 25px #ff4d88}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="entry" id="entry">
+<button class="entryBtn" onclick="enter()">Vaishnavi… tap this ❤️</button>
+</div>
+
+<button class="music" onclick="toggleMusic()">🔊</button>
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_946f0e708c.mp3?filename=romantic-ambient-piano-124008.mp3">
+</audio>
+
+<script>
+for(let i=0;i<35;i++){
+ const h=document.createElement('div');
+ h.className='heart';
+ h.innerHTML='❤️';
+ h.style.left=Math.random()*100+'vw';
+ h.style.animationDuration=(5+Math.random()*6)+'s';
+ document.body.appendChild(h);
+}
+</script>
+
+<section>
+<div class="card">
+<h1>Wait… before you scroll, Vaishnavi… this is important 😌</h1>
+<p style="margin-top:14px">There is something my heart has been wanting to ask you...</p>
+<div style="font-size:26px;margin-top:12px">⬇️</div>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h1 style="font-size:42px">Vaishnavi… will you be my forever?</h1>
+<div class="btnRow">
+<button class="yes" onclick="yes()">YES ❤️</button>
+<button class="no" id="no" onclick="no()">NO 😏</button>
+</div>
+<div class="timer" id="timer"></div>
+</div>
+</section>
+
+<div class="modal" id="modal">
+<div class="modalBox">
+<img id="memeImg">
+<p id="memeText" style="margin-top:8px"></p>
+<button onclick="closeModal()" style="margin-top:10px">okay okay… retry 😤</button>
+</div>
+</div>
+
+<section>
+<div class="card">
+<h2>A tiny preview of your future with me 😌</h2>
+<div class="typing" id="typing"></div>
+</div>
+</section>
+
+<section>
+<div>
+<h2>Reasons Why You’re Irreplaceable, Vaishnavi</h2>
+<div class="grid" style="margin-top:26px">
+<div class="reason">You walked into my life on an ordinary day and somehow made it unforgettable.</div>
+<div class="reason">Your smile has this quiet magic — it fixes things you never even knew were broken.</div>
+<div class="reason">With you, even silence feels warm.</div>
+<div class="reason">You make love feel peaceful, not complicated.</div>
+<div class="reason">You understand me in ways words rarely can.</div>
+<div class="reason">You didn’t just become important… you became home.</div>
+<div class="reason">Life genuinely feels softer and brighter with you beside me.</div>
+<div class="reason">And honestly… if I had to choose again, I would still choose you. Every single time.</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>
+I don’t promise a perfect love story, Vaishnavi…<br><br>
+But I promise effort on the hard days,
+loyalty when it matters most,
+growth together,
+and choosing you — every single day.
+</h2>
+<div class="glow">❤️</div>
+</div>
+</section>
+
+<script>
+const music=document.getElementById('music');
+function enter(){
+ document.getElementById('entry').style.display='none';
+ music.volume=.6;
+ music.play().catch(()=>{});
+}
+
+function toggleMusic(){
+ if(music.paused){music.play();event.target.innerText='🔈'}
+ else{music.pause();event.target.innerText='🔊'}
+}
+
+/* REAL LOVE TIMER */
+const start=new Date('2024-05-20T11:11:00');
+function updateTimer(){
+ const now=new Date();
+ const diff=now-start;
+ const days=Math.floor(diff/86400000);
+ const hours=Math.floor((diff%86400000)/3600000);
+ document.getElementById('timer').innerText=
+ `Since 20 May 2024, 11:11 AM — that's ${days} days and ${hours} hours of choosing you ❤️`;
+}
+updateTimer();
+
+const memes=[
+{img:'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',text:'Vaishnavi… itna bhi bhav mat khao 😭'},
+{img:'https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif',text:'Ek baar aur soch lo na…'},
+{img:'https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif',text:'System error: Vaishnavi is supposed to press YES.'},
+{img:'https://media.giphy.com/media/6VoDJzfRjJNbG/giphy.gif',text:'Dil toot gaya… retry?'}
+];
+
+let noClicks=0;
+function no(){
+ const btn=document.getElementById('no');
+ btn.classList.add('shake');
+ setTimeout(()=>btn.classList.remove('shake'),400);
+
+ const m=memes[Math.floor(Math.random()*memes.length)];
+ document.getElementById('modal').style.display='flex';
+ document.getElementById('memeImg').src=m.img;
+ document.getElementById('memeText').innerText=m.text;
+
+ noClicks++;
+ if(noClicks>2){btn.style.transform='scale(.7)';}
+}
+
+function closeModal(){
+ document.getElementById('modal').style.display='none';
+}
+
+function yes(){
+ for(let i=0;i<160;i++){
+   const c=document.createElement('div');
+   c.className='confetti';
+   c.style.left=Math.random()*100+'vw';
+   document.body.appendChild(c);
+ }
+
+ setTimeout(()=>{
+   document.body.style.background='linear-gradient(135deg,#ffd6e7,#fff)';
+   alert("I knew it ❤️\n\nNow officially, Vaishnavi — you are stuck with me forever.\n\nWarning:\nExtreme pampering, random food dates, surprise hugs, and unlimited love ahead.");
+ },500);
+}
+
+const lines=[
+ 'Good morning, Vaishnavi ❤️',
+ 'Suna hai kisi ne khana skip kiya? 👀',
+ 'Miss you a little extra today.',
+ 'You are mine… and I am very lucky for that.'
+];
+
+let i=0,j=0;
+function type(){
+ if(j<lines[i].length){
+   document.getElementById('typing').innerHTML+=lines[i][j++];
+   setTimeout(type,55);
+ }else{
+   setTimeout(()=>{
+     document.getElementById('typing').innerHTML='';
+     j=0;
+     i=(i+1)%lines.length;
+     type();
+   },1800);
+ }
+}
+
+type();
+</script>
+
+</body>
+</html>
